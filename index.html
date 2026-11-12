@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>정용락 (Yong Lack Jeong) | IT Veteran, Stargazer & Lifelong Learner</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: '#070B19',
+            deepspace: '#0d1527',
+            starlight: '#F3F4F6',
+            cosmicGold: '#F59E0B',
+            starBlue: '#38BDF8'
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+            serif: ['Noto Serif KR', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: #070B19;
+      color: #E2E8F0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* 별빛 캔버스 배경 */
+    #star-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* 글래스모피즘 효과 */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.15);
+    }
+
+    /* 은은한 네온 글로우 */
+    .glow-text {
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+    }
+    .gold-glow {
+      text-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+    }
+
+    /* 태그 뱃지 */
+    .tag-badge {
+      background: rgba(56, 189, 248, 0.1);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      transition: all 0.2s ease;
+    }
+    .tag-badge:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+  </style>
+</head>
+<body class="relative min-h-screen">
+
+  <!-- 별빛 배경 애니메이션 캔버스 -->
+  <canvas id="star-canvas"></canvas>
+
+  <!-- 상단 네비게이션 -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#070B19]/80 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center space-x-2 text-lg font-bold tracking-tight text-white group">
+        <span class="text-xl group-hover:rotate-12 transition-transform duration-300">🌌</span>
+        <span>정용락 <span class="text-xs text-sky-400 font-normal">Yong Lack Jeong</span></span>
+      </a>
+      <nav class="hidden md:flex space-x-8 text-sm text-slate-300 font-medium">
+        <a href="#about" class="hover:text-sky-400 transition-colors">소개</a>
+        <a href="#video" class="hover:text-sky-400 transition-colors">소개 영상</a>
+        <a href="#journey" class="hover:text-sky-400 transition-colors">발자취 & 철학</a>
+        <a href="#contact" class="hover:text-sky-400 transition-colors">연락하기</a>
+      </nav>
+      <a href="#contact" class="text-xs md:text-sm px-4 py-2 rounded-full border border-sky-400/40 text-sky-300 hover:bg-sky-400/10 transition-colors">
+        대화 나누기
+      </a>
+    </div>
+  </header>
+
+  <!-- 메인 컨텐츠 래퍼 -->
+  <main class="relative z-10 pt-24 pb-20">
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="max-w-5xl mx-auto px-6 pt-16 pb-24 md:pt-28 md:pb-32 text-center">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-950/60 border border-sky-500/30 text-sky-300 text-xs md:text-sm mb-6">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>IT Veteran · Stargazer · Lifelong Learner</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6">
+        <span class="text-slate-200">정용락</span>
+        <span class="text-sky-400 text-2xl sm:text-3xl md:text-4xl block md:inline font-semibold md:ml-3">Yong Lack Jeong</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl md:text-2xl text-amber-300/90 font-medium max-w-3xl mx-auto leading-relaxed mb-6 font-serif gold-glow">
+        "30년 IT 외길의 통찰, 밤하늘의 별을 향한 낭만,<br class="hidden sm:inline" /> 
+        그리고 멈추지 않는 도정으로 인생 2막을 엽니다."
+      </p>
+
+      <p class="text-slate-400 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-10 text-justify sm:text-center">
+        반세기 가까이 IT 산업의 격변기를 누비며 기술의 진화를 이끌어 왔고, 천문기상학적 시선으로 자연의 섭리를 배웠습니다. 
+        정년 이후에는 자동차 정비산업기사 자격증을 취득하며 손끝으로 기계를 다루는 기쁨을 알아가는 중입니다. 
+        깊이 있는 경험 위에 여유로운 낭만과 새로운 배움을 얹어갑니다.
+      </p>
+
+      <!-- 핵심 키워드 태그들 -->
+      <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto mb-12">
+        <span class="tag-badge px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium">#IT_30년_베테랑</span>
+        <span class="tag-badge px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium">#천문기상학_전공</span>
+        <span class="tag-badge px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium">#자동차정비산업기사</span>
+        <span class="tag-badge px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium">#인생2막_도전</span>
+        <span class="tag-badge px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium">#AI와_디지털_탐구</span>
+        <span class="tag-badge px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium">#여유로운_여행</span>
+      </div>
+
+      <!-- 바로가기 액션 버튼 -->
+      <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4">
+        <a href="#video" class="px-5 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition-all shadow-lg shadow-red-600/30 flex items-center space-x-2 text-sm">
+          <i class="fa-brands fa-youtube text-lg"></i>
+          <span>소개 영상 보기</span>
+        </a>
+        <a href="#about" class="px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold transition-all shadow-lg shadow-sky-500/25 flex items-center space-x-2 text-sm">
+          <span>나의 이야기</span>
+          <i class="fa-solid fa-arrow-down text-xs"></i>
+        </a>
+        <a href="https://blog.naver.com/yljeong" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition-all flex items-center space-x-2 text-sm">
+          <i class="fa-solid fa-book-open text-sky-400"></i>
+          <span>네이버 블로그</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 1.5 Video Section (유튜브 영상 소개) -->
+    <section id="video" class="max-w-4xl mx-auto px-6 py-12 md:py-16">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/30 text-red-300 text-xs mb-3">
+          <i class="fa-brands fa-youtube"></i>
+          <span>FEATURED STORY</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">영상으로 만나는 정용락의 이야기</h2>
+        <p class="text-slate-400 text-sm mt-2">"신중년으로 살아가기" — 화면 속에서 생생하게 전해지는 발자취와 삶의 이야기</p>
+        <div class="w-12 h-1 bg-gradient-to-r from-red-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- 영상 래퍼 (글래스모피즘 + 앰비언트 글로우 프레임) -->
+      <div class="glass-card rounded-2xl p-4 sm:p-6 border border-sky-500/20 shadow-2xl relative group overflow-hidden">
+        <div class="absolute -inset-1 bg-gradient-to-r from-red-500/20 via-sky-500/20 to-amber-500/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition duration-700 -z-10"></div>
+        
+        <!-- 영상 상단 헤더 정보 -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 pb-3 border-b border-slate-800/80">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white shadow-md shadow-red-600/30">
+              <i class="fa-brands fa-youtube text-lg"></i>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-base sm:text-lg">신중년으로 살아가기</h3>
+              <p class="text-xs text-slate-400">채널: <span class="text-sky-300">Yong Lack Jeong (@yonglackjeong1962)</span></p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2 w-full sm:w-auto">
+            <a href="https://youtu.be/mZBnLNp3D40" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-none text-center px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold text-xs transition-colors flex items-center justify-center space-x-1.5 shadow-md shadow-red-600/20">
+              <i class="fa-solid fa-play text-[10px]"></i>
+              <span>YouTube에서 열기</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+            </a>
+            <a href="https://www.youtube.com/@yonglackjeong1962" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-none text-center px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs transition-colors border border-slate-700 flex items-center justify-center space-x-1">
+              <span>채널 방문</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 인터랙티브 비디오 컨테이너 -->
+        <div id="video-container" class="relative w-full overflow-hidden rounded-xl bg-black" style="padding-top: 56.25%;">
+          <!-- 초기 썸네일 & 플레이 오버레이 (클릭 시 iframe 로드) -->
+          <div id="video-placeholder" class="absolute inset-0 cursor-pointer group/thumb">
+            <img 
+              src="https://i.ytimg.com/vi/mZBnLNp3D40/hqdefault.jpg" 
+              alt="신중년으로 살아가기 썸네일" 
+              class="w-full h-full object-cover object-center filter brightness-90 group-hover/thumb:brightness-100 transition-all duration-300 group-hover/thumb:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/30"></div>
+            
+            <!-- 중앙 플레이 버튼 -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600/90 group-hover/thumb:bg-red-600 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-xl shadow-red-600/50 group-hover/thumb:scale-110 transition-transform duration-300 mb-3">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+              <p class="text-white font-bold text-sm sm:text-base drop-shadow-md">화면을 클릭하여 웹에서 재생하기</p>
+              <p class="text-xs text-slate-300 mt-1 drop-shadow">브라우저 보안으로 로컬 재생이 제한될 경우 상단 'YouTube에서 열기'를 눌러주세요</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 하단 안내 바 -->
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 px-1 gap-2">
+          <span class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+            <span>컴퓨터 로컬 파일(file://) 환경의 보안 차단에 대비해 바로가기 링크를 항상 함께 지원합니다.</span>
+          </span>
+          <span class="text-slate-500">Video ID: mZBnLNp3D40</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. About Me Section -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-20">
+      <div class="text-center mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-sky-400 font-semibold mb-2">About Me</h2>
+        <p class="text-2xl sm:text-3xl font-bold text-white">삶을 채우는 네 가지 시선</p>
+        <div class="w-12 h-1 bg-gradient-to-r from-sky-400 to-amber-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- 카드 1: IT Professional -->
+        <div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl group-hover:bg-sky-500/20 transition-all"></div>
+          <div class="flex items-center space-x-4 mb-5">
+            <div class="w-14 h-14 rounded-xl bg-sky-950/80 border border-sky-500/30 flex items-center justify-center text-2xl text-sky-400">
+              💻
+            </div>
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-sky-400">Technology & Innovation</span>
+              <h3 class="text-xl font-bold text-white">30년 IT Professional</h3>
+            </div>
+          </div>
+          <h4 class="text-sm font-semibold text-sky-200/90 mb-3">시대와 기술을 기록해온 베테랑</h4>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            30년 동안 IT 현장에서 시스템과 기술의 변화를 함께하며 탄탄한 전문성과 문제 해결 능력을 쌓았습니다.
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            은퇴 이후에도 머물러 있지 않고, 최신 AI 도구와 플랫폼(ChatGPT, Copilot, 클라우드 등)을 능숙하게 다루며 디지털 시대의 즐거움을 이어가고 있습니다.
+          </p>
+        </div>
+
+        <!-- 카드 2: Stargazer & Romanticist -->
+        <div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all"></div>
+          <div class="flex items-center space-x-4 mb-5">
+            <div class="w-14 h-14 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-2xl text-indigo-400">
+              🔭
+            </div>
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Astronomy & Nature</span>
+              <h3 class="text-xl font-bold text-white">Stargazer & Romanticist</h3>
+            </div>
+          </div>
+          <h4 class="text-sm font-semibold text-indigo-200/90 mb-3">별을 사랑하는 낭만주의자</h4>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            대학에서 천문기상학을 전공하며 우주의 질서와 자연의 거대한 흐름을 읽는 눈을 길렀습니다.
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            바쁜 기술의 세계 속에서도 밤하늘을 올려다볼 줄 아는 마음의 여유와 삶의 낭만을 소중한 나침반으로 삼고 있습니다.
+          </p>
+        </div>
+
+        <!-- 카드 3: Hands-on Engineer -->
+        <div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all"></div>
+          <div class="flex items-center space-x-4 mb-5">
+            <div class="w-14 h-14 rounded-xl bg-amber-950/80 border border-amber-500/30 flex items-center justify-center text-2xl text-amber-400">
+              🔧
+            </div>
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-amber-400">Craftsmanship & Challenge</span>
+              <h3 class="text-xl font-bold text-white">Hands-on Engineer</h3>
+            </div>
+          </div>
+          <h4 class="text-sm font-semibold text-amber-200/90 mb-3">손끝으로 배우는 열정의 기술자</h4>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            "배움에는 정년이 없다"는 신념으로, 은퇴 후 자동차 정비산업기사 자격증을 취득하며 기계 공학의 세계에 뛰어들었습니다.
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            머리로 이해한 지식을 넘어, 직접 손으로 차를 만지고 고치며 온전히 내 것으로 만드는 성취감 넘치는 삶을 즐깁니다.
+          </p>
+        </div>
+
+        <!-- 카드 4: Slow Traveler & Mindful Investor -->
+        <div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+          <div class="flex items-center space-x-4 mb-5">
+            <div class="w-14 h-14 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-2xl text-emerald-400">
+              ✈️
+            </div>
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Lifestyle & Insight</span>
+              <h3 class="text-xl font-bold text-white">Slow Traveler & Mindful Investor</h3>
+            </div>
+          </div>
+          <h4 class="text-sm font-semibold text-emerald-200/90 mb-3">여유와 통찰을 가꾸는 여행자</h4>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            국내외 방방곡곡(양양, 고창, 제주, 도쿄, 닛코, 나가사키 등)을 누비며, 서두르지 않고 그곳의 풍경과 공기를 온전히 담는 여행을 사랑합니다.
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            주식 시장과 경제 흐름을 꾸준히 공부하며 긴 호흡으로 내일을 준비하는 지혜로운 자산 관리를 실천합니다.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. My Journey & Philosophy -->
+    <section id="journey" class="max-w-5xl mx-auto px-6 py-20">
+      <div class="text-center mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-sky-400 font-semibold mb-2">My Journey & Philosophy</h2>
+        <p class="text-2xl sm:text-3xl font-bold text-white">나의 발자취와 시선</p>
+        <div class="w-12 h-1 bg-gradient-to-r from-sky-400 to-amber-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- 삶의 모토 배너 -->
+      <div class="glass-card rounded-3xl p-8 sm:p-12 text-center mb-16 border border-amber-500/20 bg-gradient-to-b from-slate-900/90 to-slate-950/90 shadow-xl">
+        <div class="inline-block text-amber-400 text-3xl mb-4">✨</div>
+        <h3 class="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-3">Life Motto</h3>
+        <blockquote class="text-xl sm:text-2xl md:text-3xl font-serif text-white leading-relaxed max-w-3xl mx-auto">
+          "30년 IT의 논리적 시선, 하늘의 별을 품은 낭만,<br class="hidden sm:inline" />
+          기계를 고치는 장인의 손길, 그리고 내일을 배우는 여유."
+        </blockquote>
+      </div>
+
+      <!-- 4가지 핵심 테마 그리드 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors">
+          <div class="text-sky-400 font-mono text-sm mb-2 font-bold">01 / IT & Tech Legacy</div>
+          <h4 class="text-lg font-bold text-white mb-2">기술적 통찰과 지속적 탐구</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            30년간 다져온 기술적 통찰과 최신 AI 도구를 향한 끊임없는 호기심으로 시대의 변화를 능동적으로 수용합니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors">
+          <div class="text-indigo-400 font-mono text-sm mb-2 font-bold">02 / Astronomy & Romance</div>
+          <h4 class="text-lg font-bold text-white mb-2">하늘과 별이 주는 낭만</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            천문기상학과 밤하늘이 주는 삶의 낭만과 여유를 품고, 우주의 질서 속에서 겸손과 성찰을 배웁니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors">
+          <div class="text-amber-400 font-mono text-sm mb-2 font-bold">03 / Second Act Mechanics</div>
+          <h4 class="text-lg font-bold text-white mb-2">손끝으로 증명한 도전 정신</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            정년 후 자동차 정비산업기사 취득으로 증명한 식지 않는 열정과, 기계를 직접 어루만지는 장인의 태도입니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors">
+          <div class="text-emerald-400 font-mono text-sm mb-2 font-bold">04 / Travel & Wealth</div>
+          <h4 class="text-lg font-bold text-white mb-2">쉼표와 지혜로운 안목</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            낯선 여행지에서 마주하는 온전한 쉼표, 그리고 경제 흐름을 냉철하고 지혜롭게 읽어가는 혜안입니다.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Contact & Links Section -->
+    <section id="contact" class="max-w-4xl mx-auto px-6 py-20">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 text-center border-sky-500/20 relative">
+        <div class="w-16 h-16 rounded-2xl bg-sky-950 border border-sky-500/30 flex items-center justify-center mx-auto mb-6 text-2xl text-sky-400">
+          <i class="fa-regular fa-paper-plane"></i>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">함께 나눌 이야기가 있다면</h2>
+        <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto mb-8 font-serif">
+          "IT 이야기, 밤하늘과 별의 낭만, 정비와 기계에 대한 호기심, 혹은 인생 2막의 도전에 대한 따뜻한 대화를 언제든 환영합니다."
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+          <!-- 이메일 버튼 -->
+          <a href="mailto:yljeong@naver.com" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold transition-all shadow-lg shadow-sky-500/25 flex items-center justify-center space-x-2 text-sm">
+            <i class="fa-solid fa-envelope"></i>
+            <span>yljeong@naver.com</span>
+          </a>
+
+          <!-- 네이버 블로그 버튼 -->
+          <a href="https://blog.naver.com/yljeong" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-600/25 flex items-center justify-center space-x-2 text-sm">
+            <span class="font-extrabold text-sm">N</span>
+            <span>네이버 블로그</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
+          </a>
+
+          <!-- 유튜브 영상 바로가기 버튼 -->
+          <a href="https://youtu.be/mZBnLNp3D40" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition-all shadow-lg shadow-red-600/25 flex items-center justify-center space-x-2 text-sm">
+            <i class="fa-brands fa-youtube text-base"></i>
+            <span>YouTube 영상 보기</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
+          </a>
+        </div>
+
+        <p class="text-xs text-slate-500">
+          이메일 버튼을 누르시면 메일 프로그램이 연결되며, 언제든 편하게 소통하실 수 있습니다.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="relative z-10 border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 Yong Lack Jeong. All rights reserved.</p>
+      <p class="flex items-center space-x-1">
+        <span>Designed with</span>
+        <span class="text-sky-400">★</span>
+        <span>for Life's Second Act</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- 인터랙티브 별무리 캔버스 스크립트 -->
+  <script>
+    (function () {
+      const canvas = document.getElementById('star-canvas');
+      const ctx = canvas.getContext('2d');
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        initStars();
+      });
+
+      let stars = [];
+      const STAR_COUNT = Math.min(Math.floor((width * height) / 8000), 160);
+
+      function initStars() {
+        stars = [];
+        for (let i = 0; i < STAR_COUNT; i++) {
+          stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 1.4 + 0.4,
+            alpha: Math.random() * 0.8 + 0.2,
+            speed: Math.random() * 0.02 + 0.005,
+            direction: Math.random() > 0.5 ? 1 : -1,
+            color: Math.random() > 0.3 ? '#ffffff' : (Math.random() > 0.5 ? '#7dd3fc' : '#fde68a')
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        stars.forEach((star) => {
+          star.alpha += star.speed * star.direction;
+          if (star.alpha > 0.95) {
+            star.alpha = 0.95;
+            star.direction = -1;
+          } else if (star.alpha < 0.15) {
+            star.alpha = 0.15;
+            star.direction = 1;
+          }
+
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle = star.color;
+          ctx.globalAlpha = star.alpha;
+          ctx.shadowBlur = star.radius * 3;
+          ctx.shadowColor = star.color;
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      initStars();
+      draw();
+    })();
+
+    // 유튜브 동영상 인터랙티브 로더 스크립트
+    const placeholder = document.getElementById('video-placeholder');
+    const container = document.getElementById('video-container');
+
+    if (placeholder && container) {
+      placeholder.addEventListener('click', () => {
+        container.innerHTML = `
+          <iframe 
+            class="absolute top-0 left-0 w-full h-full rounded-xl"
+            src="https://www.youtube-nocookie.com/embed/mZBnLNp3D40?autoplay=1&rel=0" 
+            title="신중년으로 살아가기" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        `;
+      });
+    }
+  </script>
+</body>
+</html>

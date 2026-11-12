@@ -1,0 +1,11 @@
+{
+  "name": "yong-lack-jeong-mypage",
+  "version": "1.0.0",
+  "description": "정용락 (Yong Lack Jeong) 개인 소개 페이지",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["portfolio", "profile", "it-veteran", "stargazer"],
+  "author": "Yong Lack Jeong",
+  "license": "MIT"
+}
